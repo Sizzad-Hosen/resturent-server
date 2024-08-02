@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
+const cors = require('cors'); 
 const jwt = require('jsonwebtoken');
 const stripe = require('stripe')(process.env.STRIPE_GATEWAY_SK);
 require('dotenv').config();
@@ -26,7 +26,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
+    // await client.connect();
 
     const menuCollection = client.db("resturentDB").collection("menu");
     const reviewCollection = client.db("resturentDB").collection("review");
@@ -325,8 +325,8 @@ const revenue = result.length > 0 ? result[0].totalRevenue : 0 ;
       res.send(result);
     });
 
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    // await client.db("admin").command({ ping: 1 });
+    // console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
